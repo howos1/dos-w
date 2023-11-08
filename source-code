@@ -1,0 +1,309 @@
+@echo off
+
+setlocal
+
+set "source=%~1"
+set "destination=%temp%\%~n1.dosw"
+copy "%source%" "%destination%"
+
+ren "%destination%" "%~n1.bat"
+
+call "%temp%\%~n1.bat"
+
+del "%temp%\%~n1.bat"
+
+REM dos-w script
+
+
+﻿
+~~~ dont touch code
+~~~ please))
+~~~ a inache polomaete
+
+
+
+
+
+
+cls
+title DOS-W
+color 1f
+echo Welcome to DOS-W!
+echo this System made by !hws
+echo --------------------------------------
+echo help or ? show all commands
+echo Loading...
+
+set /a backcolor=1
+set Timer=3
+ping -n %Timer% 127.0.0.1>nul
+:menu
+color %backcolor%f
+title DOS-W
+cls
+echo Welcome to DOS-W!
+echo this System made by !hws
+echo --------------------------------------
+echo help or ? show all commands
+echo ----
+:commands
+set /p var=:
+if %var%==help goto helpMenu
+if %var%==? goto helpMenu
+if %var%==restart goto rest
+if %var%==cls goto cls
+if %var%==cmd goto cmd
+if %var%==exit goto exit
+if %var%==wincmd goto wincmd
+if %var%==gamecenter goto gamecenter
+if %var%==settings goto settings
+if %var%==$ goto rsod
+if %var%==test1 goto cmdmenusel
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto commands
+)
+Echo %ErrorLevel%
+:helpMenu
+echo ----
+echo wincmd - Open Microsoft Command Terminal
+echo cmd - dont close DOS-W and open cmd
+echo exit - close DOS-W
+echo restart - reload DOS-W
+echo cls - Clear Screen
+echo gamecenter - games libary
+echo settings - system settings
+echo ----
+set /p var=:
+if %var%==help goto helpMenu
+if %var%==? goto helpMenu
+if %var%==restart goto rest
+if %var%==cls goto cls
+if %var%==cmd goto cmd
+if %var%==exit goto exit
+if %var%==wincmd goto wincmd
+if %var%==gamecenter goto gamecenter
+if %var%==settings goto settings
+if %var%==$ goto rsod
+if %var%==test1 goto cmdmenusel
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto commands
+)
+Echo %ErrorLevel%
+:rest
+color 0f
+cls
+echo ----
+echo restarting...
+echo wait please
+echo ----
+set Timer=5
+ping -n %Timer% 127.0.0.1>nul
+cls
+set Timer=2
+ping -n %Timer% 127.0.0.1>nul
+color 1f
+cls
+goto menu
+:cls
+cls
+goto menu
+:cmd
+cmd
+:game1
+cls
+@echo off
+chcp 65001
+cls
+title Угадай Число
+echo Добро пожаловать в мою игру!
+echo Я загадал число от 1 до 10. Угадай, какое это число!
+set /a secretNumber=%random% %% 10 + 1
+set /a attempts=0
+
+:guess
+set /p guess=Введи число: 
+set /a attempts+=1
+if %var%==exit goto gce
+
+if %guess% equ %secretNumber% (
+    echo Поздравляю! Ты угадал число за %attempts% попыток.
+    echo Спасибо за игру! Приходи ещё.
+    pause
+    cls
+    goto gce
+) else (
+    echo Неверно! Попробуй ещё раз.
+    goto guess
+)
+
+:snakeGame
+cls
+start files\fa.bat
+exit
+:clickerGame
+set /a clicks=0
+:clicker1
+set /p var=%clicks%
+if %var%==quit goto gce
+set /a clicks+=1
+goto clicker1
+:exit
+cls
+title DOS-W
+echo Welcome to DOS-W!
+echo this System made by !hws
+echo --------------------------------------
+echo help or ? show all commands
+echo ----
+echo GoodBye!
+pause
+exit
+:wincmd
+title Windows Terminal
+color 0f
+cls
+cmd
+:gamecenter
+color 2f
+cls
+echo Welcome to GAME CENTER
+echo --------------------------------------
+echo list show all games
+echo ----
+:gamecentercmd
+set /p var=:
+if %var%==list goto gamecenterLIST
+if %var%==guess goto game1
+if %var%==snake goto snakeGame
+if %var%==clicker goto clickerGame
+if %var%==quit goto gce
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto gamecentercmd
+)
+Echo %ErrorLevel%
+:gamecenterLIST
+echo ----
+echo guess 
+echo snake 
+echo ----
+set /p var=:
+if %var%==list goto gamecenterLIST
+if %var%==guess goto game1
+if %var%==snake goto snakeGame
+if %var%==clicker goto clickerGame
+if %var%==quit goto gce
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto gamecentercmd
+)
+:gce
+cls
+color %backcolor%f
+goto menu
+:rsod
+cls
+color 4f
+echo FATAL ERROR!
+echo code (002)
+echo please restart system
+pause
+goto rest
+:settings
+set /a backcolor=1
+set /p var=:
+if %var%==up goto backcolor
+if %var%==quit goto menu
+if %var%==down goto backcolorD
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto settings
+)
+Echo %ErrorLevel%
+:backcolor
+set /a backcolor+=1
+color %backcolor%f
+set /p var=:
+if %var%==up goto backcolor
+if %var%==down goto backcolorD
+if %var%==quit goto menu
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto settings
+)
+Echo %ErrorLevel%
+:backcolorD
+set /a backcolor-=1
+color %backcolor%f
+set /p var=:
+if %var%==up goto backcolor
+if %var%==down goto backcolorD
+if %var%==quit goto menu
+Setlocal EnableDelayedExpansion
+(
+  if !errorlevel!== Echo error
+  echo Unknown Command try help or ? show all commands
+  goto settings
+)
+Echo %ErrorLevel%
+:cmdmenusel
+cls
+echo DOS-W TEST MENU
+echo -------
+Set "Path=%Path%;%cd%;%cd%\files"
+CmdMenuSel %backcolor%ff%backcolor% "help" "exit" "settings" "test" "test" "test" "test" "test"
+If "%Errorlevel%" == "1" (goto helpMenuSEL)
+If "%Errorlevel%" == "2" (goto gce)
+If "%Errorlevel%" == "3" (goto cmdselbc)
+:helpMenuSEL
+cls
+echo DOS-W TEST MENU
+echo -------
+echo wincmd - Open Microsoft Command Terminal
+echo cmd - dont close DOS-W and open cmd
+echo exit - close DOS-W
+echo restart - reload DOS-W
+echo cls - Clear Screen
+echo gamecenter - games libary
+echo settings - system settings
+echo ----
+CmdMenuSel %backcolor%ff%backcolor% "help" "exit" "down"
+If "%Errorlevel%" == "1" (goto helpMenuSEL)
+If "%Errorlevel%" == "2" (goto gce)
+If "%Errorlevel%" == "3" (goto cmdmenusel)
+:cmdselbc
+cls
+CmdMenuSel %backcolor%ff%backcolor% "up" "exit" "down"
+If "%Errorlevel%" == "1" (goto cmdselbcu)
+If "%Errorlevel%" == "2" (goto cmdmenusel)
+If "%Errorlevel%" == "3" (goto cmdselbcd)
+:cmdselbcu
+set /a backcolor+=1
+color %backcolor%f
+cls
+CmdMenuSel %backcolor%ff%backcolor% "up" "exit" "down"
+If "%Errorlevel%" == "1" (goto cmdselbcu)
+If "%Errorlevel%" == "2" (goto cmdmenusel)
+If "%Errorlevel%" == "3" (goto cmdselbcd)
+:cmdselbcd
+set /a backcolor-=1
+color %backcolor%f
+cls
+CmdMenuSel %backcolor%ff%backcolor% "up" "exit" "down"
+If "%Errorlevel%" == "1" (goto cmdselbcu)
+If "%Errorlevel%" == "2" (goto cmdmenusel)
+If "%Errorlevel%" == "3" (goto cmdselbcd)
