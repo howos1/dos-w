@@ -59,6 +59,7 @@ if %var%==gamecenter goto gamecenter
 if %var%==settings goto settings
 if %var%==$ goto rsod
 if %var%==test1 goto cmdmenusel
+if %var%==Hz goto Hz
 Setlocal EnableDelayedExpansion
 (
   if !errorlevel!== Echo error
@@ -69,12 +70,13 @@ Echo %ErrorLevel%
 :helpMenu
 echo ----
 echo wincmd - Open Microsoft Command Terminal
-echo cmd - dont close DOS-W and open cmd
-echo exit - close DOS-W
-echo restart - reload DOS-W
+echo cmd - Dont close DOS-W and open cmd
+echo exit - Close DOS-W
+echo restart - Reload DOS-W
 echo cls - Clear Screen
-echo gamecenter - games libary
-echo settings - system settings
+echo gamecenter - Games libary
+echo settings - System settings
+echo Hz - Сreate a startup that changes Hz
 echo ----
 set /p var=:
 if %var%==help goto helpMenu
@@ -88,6 +90,7 @@ if %var%==gamecenter goto gamecenter
 if %var%==settings goto settings
 if %var%==$ goto rsod
 if %var%==test1 goto cmdmenusel
+if %var%==Hz goto Hz
 Setlocal EnableDelayedExpansion
 (
   if !errorlevel!== Echo error
@@ -219,6 +222,17 @@ echo code (002)
 echo please restart system
 pause
 goto rest
+:Hz
+set /p input="Hz: "
+echo @echo off >> "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\doswstartup.bat"
+echo QRes.exe /x:1920 /y:1080 /r:%input% >> "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\doswstartup.bat"
+echo pause >> "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\doswstartup.bat"
+copy /Y "files\QRes.exe" "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
+files\QRes.exe /x:1920 /y:1080 /r:%input%
+cls
+echo Done!
+pause
+goto gce
 :settings
 set /a backcolor=1
 set /p var=:
